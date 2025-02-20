@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Cahier des Charges pour le Projet "Ma Supérette sur le Net"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #444;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.75em;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 0.3em;
+        }
+        h3 {
+            font-size: 1.5em;
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
+        }
+        h4 {
+            font-size: 1.25em;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        ul, ol {
+            margin-left: 2em;
+            margin-bottom: 1em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1em;
+            background-color: #fff;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 0.75em;
+            text-align: left;
+        }
+        code {
+            background-color: #eee;
+            padding: 0.2em 0.4em;
+            font-family: Consolas, monospace;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #eee;
+            padding: 1em;
+            overflow: auto;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 2em 0;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cahier des Charges pour le Projet "Ma Supérette sur le Net"</h1>
+
+<h4>Projet par: MEFTAH Zineb, MEDJBER Syphax</h4>
+<h5>G2 L2 Informatique</h5>
+
+<hr>
+
+<h2>Table des Matières</h2>
+<ol>
+    <li><a href="#introduction">Introduction</a>
+        <ul>
+            <li><a href="#11-présentation-du-projet">1.1 Présentation du Projet</a></li>
+            <li><a href="#12-objectif-du-document">1.2 Objectif du Document</a></li>
+            <li><a href="#13-parties-prenantes">1.3 Parties Prenantes</a></li>
+        </ul>
+    </li>
+    <li><a href="#description-du-projet">Description du Projet</a>
+        <ul>
+            <li><a href="#21-contexte-et-enjeux">2.1 Contexte et Enjeux</a></li>
+            <li><a href="#22-objectifs-spécifiques">2.2 Objectifs Spécifiques</a></li>
+        </ul>
+    </li>
+    <li><a href="#spécifications-fonctionnelles">Spécifications Fonctionnelles</a>
+        <ul>
+            <li><a href="#31-gestion-des-fournisseurs">3.1 Gestion des Fournisseurs</a></li>
+            <li><a href="#32-gestion-des-produits">3.2 Gestion des Produits</a></li>
+            <li><a href="#33-gestion-des-achats-et-des-stocks">3.3 Gestion des Achats et des Stocks</a></li>
+            <li><a href="#34-gestion-des-ventes">3.4 Gestion des Ventes</a></li>
+            <li><a href="#35-gestion-des-clients">3.5 Gestion des Clients</a></li>
+            <li><a href="#36-gestion-des-utilisateurs">3.6 Gestion des Utilisateurs</a></li>
+            <li><a href="#37-gestion-des-logs">3.7 Gestion des Logs</a></li>
+            <li><a href="#38-tableaux-de-bord-et-rapports">3.8 Tableaux de Bord et Rapports</a></li>
+        </ul>
+    </li>
+    <li><a href="#spécifications-techniques">Spécifications Techniques</a>
+        <ul>
+            <li><a href="#41-technologies-utilisées">4.1 Technologies Utilisées</a></li>
+            <li><a href="#42-architecture-du-système">4.2 Architecture du Système</a></li>
+            <li><a href="#43-sécurité-et-authentification">4.3 Sécurité et Authentification</a></li>
+            <li><a href="#44-journalisation-des-actions">4.4 Journalisation des Actions</a></li>
+            <li><a href="#45-gestion-des-promotions">4.5 Gestion des Promotions</a></li>
+        </ul>
+    </li>
+    <li><a href="#scénarios-dutilisation">Scénarios d'Utilisation</a>
+        <ul>
+            <li><a href="#51-gestion-des-fournisseurs-et-des-contacts">5.1 Gestion des Fournisseurs et des Contacts</a></li>
+            <li><a href="#52-gestion-des-produits-et-des-promotions">5.2 Gestion des Produits et des Promotions</a></li>
+            <li><a href="#53-gestion-des-achats-lots-et-des-stocks">5.3 Gestion des Achats (Lots) et des Stocks</a></li>
+            <li><a href="#54-gestion-des-ventes-et-des-clients">5.4 Gestion des Ventes et des Clients</a></li>
+            <li><a href="#55-évaluation-des-fournisseurs">5.5 Évaluation des Fournisseurs</a></li>
+            <li><a href="#56-gestion-des-utilisateurs-et-sécurité">5.6 Gestion des Utilisateurs et Sécurité</a></li>
+            <li><a href="#57-tableaux-de-bord-et-rapports">5.7 Tableaux de Bord et Rapports</a></li>
+        </ul>
+    </li>
+    <li><a href="#points-forts-de-la-modélisation-dans-le-contexte-terminal">Points Forts de la Modélisation dans le Contexte Terminal</a></li>
+    <li><a href="#architecture-du-système-basée-sur-la-modélisation">Architecture du Système Basée sur la Modélisation</a></li>
+    <li><a href="#conformité-légale-et-réglementaire">Conformité Légale et Réglementaire</a>
+        <ul>
+            <li><a href="#81-protection-des-données-personnelles">8.1 Protection des Données Personnelles</a></li>
+            <li><a href="#82-sécurité-des-données">8.2 Sécurité des Données</a></li>
+            <li><a href="#83-obligations-légales">8.3 Obligations Légales</a></li>
+        </ul>
+    </li>
+    <li><a href="#gestion-de-projet-et-planification">Gestion de Projet et Planification</a>
+        <ul>
+            <li><a href="#91-méthodologie-de-gestion-de-projet">9.1 Méthodologie de Gestion de Projet</a></li>
+            <li><a href="#92-calendrier-prévisionnel">9.2 Calendrier Prévisionnel</a></li>
+            <li><a href="#93-ressources">9.3 Ressources</a></li>
+            <li><a href="#94-gestion-des-risques">9.4 Gestion des Risques</a></li>
+        </ul>
+    </li>
+    <li><a href="#assurance-qualité">Assurance Qualité</a>
+        <ul>
+            <li><a href="#101-plan-de-tests">10.1 Plan de Tests</a></li>
+            <li><a href="#102-critères-de-performance">10.2 Critères de Performance</a></li>
+            <li><a href="#103-revue-de-code">10.3 Revue de Code</a></li>
+        </ul>
+    </li>
+    <li><a href="#maintenance-et-support">Maintenance et Support</a>
+        <ul>
+            <li><a href="#111-support-post-déploiement">11.1 Support Post-Déploiement</a></li>
+            <li><a href="#112-plan-de-sauvegarde">11.2 Plan de Sauvegarde</a></li>
+            <li><a href="#113-scalabilité">11.3 Mise à Jour et Scalabilité</a></li>
+        </ul>
+    </li>
+    <li><a href="#critères-dacceptation">Critères d'Acceptation</a>
+        <ul>
+            <li><a href="#121-conformité-aux-spécifications">12.1 Conformité aux Spécifications</a></li>
+            <li><a href="#122-validation-par-le-client">12.2 Validation par le Client</a></li>
+            <li><a href="#123-documentation-complète">12.3 Documentation Complète</a></li>
+        </ul>
+    </li>
+    <li><a href="#annexes">Annexes</a>
+        <ul>
+            <li><a href="#131-glossaire">13.1 Glossaire</a></li>
+            <li><a href="#132-références">13.2 Références</a></li>
+            <li><a href="#133-schémas">13.3 Schémas</a></li>
+        </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<hr>
+
+<h2 id="introduction">Introduction</h2>
+
+<h3 id="11-présentation-du-projet">1.1 Présentation du Projet</h3>
+<ul>
+    <li><strong>Objectif</strong> : Proposer l’informatisation complète d’une supérette via une application en ligne de commande (terminal), optimisant la gestion des fournisseurs, des achats, des stocks, des clients et des ventes.</li>
+    <li><strong>Vision et Mission</strong> : Améliorer l’efficacité opérationnelle et la compétitivité de la supérette en automatisant les processus clés, tout en offrant une meilleure expérience utilisateur grâce à une gestion optimisée des stocks et des ventes via une interface terminal conviviale.</li>
+</ul>
+
+<h3 id="12-objectif-du-document">1.2 Objectif du Document</h3>
+<p>Ce cahier des charges détaille les spécifications fonctionnelles, techniques, légales et organisationnelles pour le développement du projet <strong>"Ma Supérette sur le Net"</strong>. Il servira de référence pour toutes les parties prenantes tout au long du cycle de vie du projet.</p>
+
+<h3 id="13-parties-prenantes">1.3 Parties Prenantes</h3>
+<ul>
+    <li><strong>Client</strong> : Gérant de la supérette.</li>
+    <li><strong>Équipe de Développement</strong> : Étudiants en charge du projet.</li>
+    <li><strong>Utilisateurs Finaux</strong> : Personnel de la supérette (gérant, caissiers, gestionnaires de stock).</li>
+    <li><strong>Fournisseurs</strong> : Entreprises fournissant les produits à la supérette.</li>
+</ul>
+
+<hr>
+
+<h2 id="description-du-projet">Description du Projet</h2>
+
+<h3 id="21-contexte-et-enjeux">2.1 Contexte et Enjeux</h3>
+<p>La supérette souhaite moderniser sa gestion interne en informatisant ses processus pour gagner en efficacité, réduire les erreurs humaines et optimiser la gestion des stocks et des ventes. L'application sera exécutée via le terminal, offrant une interface en ligne de commande adaptée aux besoins du personnel.</p>
+
+<h3 id="22-objectifs-spécifiques">2.2 Objectifs Spécifiques</h3>
+<ul>
+    <li><strong>Gestion centralisée des fournisseurs</strong> : Faciliter l’ajout, la modification et la suppression des fournisseurs, ainsi que l’accès à leurs informations détaillées.</li>
+    <li><strong>Suivi précis des achats et des stocks</strong> : Gérer les lots de produits, les quantités, les dates d’achat et de péremption.</li>
+    <li><strong>Optimisation des ventes</strong> : Enregistrer les ventes détaillées pour analyser les performances et les tendances.</li>
+    <li><strong>Tableaux de bord intuitifs</strong> : Offrir au gérant des outils d’analyse pour les ventes, les bénéfices, les commandes et la gestion des stocks via le terminal.</li>
+</ul>
+<h3>ER Diagram - Ma Supérette</h3> 
+<img src="image.png" alt="ER Diagram - Ma Supérette" style="width:100%; max-width:600px;">
+
+<hr>
+
+<h2 id="spécifications-fonctionnelles">Spécifications Fonctionnelles</h2>
+<h3 id="31-gestion-des-fournisseurs">3.1 Gestion des Fournisseurs</h3>
+<ul>
+    <li><strong>Fonctionnalités</strong> :
+        <ul>
+            <li><strong>CRUD Fournisseurs</strong> : Ajouter, modifier, supprimer et consulter les fournisseurs.</li>
+            <li><strong>Informations détaillées</strong> :
+                <ul>
+                    <li><strong>Entreprise</strong> : Nom de la société, numéro SIRET, adresse, e-mail principal.</li>
+                    <li><strong>Contacts associés</strong> : Un fournisseur peut avoir plusieurs contacts, chacun avec nom, prénom, fonction, e-mail et téléphone.</li>
+                </ul>
+            </li>
+            <li><strong>Gestion des contrats</strong> :
+                <ul>
+                    <li><strong>Contrats établis</strong> : Suivi des engagements de livraison, quantités minimales, dates de début et de fin, prix fixe.</li>
+                    <li><strong>Prolongation du contrat</strong> : Le contrat peut être prolongé en modifiant simplement la date de fin, sans avoir besoin de créer un nouveau contrat.</li>
+                    <li><strong>Un ou plusieurs Produits</strong> : Le contrat est lié spécifiquement à un produit.</li>
+                    <li><strong>Modification de prix</strong> : En cas de modification de prix, un nouveau contrat devra être établi (il faut mettre à jour la date de fin de l'ancien contrat).</li>
+                </ul>
+            </li>
+            <li><strong>Évaluations des fournisseurs</strong> :
+                <ul>
+                    <li><strong>Notations</strong> : Les utilisateurs peuvent évaluer les fournisseurs, ajouter des commentaires et enregistrer la date de l’évaluation. Ainsi, chaque fois que nous souhaitons choisir le fournisseur à choisir pour obtenir un produit, nous nous aidons de ce tableau de notation.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="32-gestion-des-produits">3.2 Gestion des Produits</h3>
+<ul>
+    <li><strong>Fonctionnalités</strong> :
+        <ul>
+            <li><strong>CRUD Produits</strong> : Ajouter, modifier, supprimer et consulter les produits.</li>
+            <li><strong>Informations détaillées</strong> :
+                <ul>
+                    <li>Nom du produit, description détaillée, catégorie, prix de vente actuel.</li>
+                </ul>
+            </li>
+            <li><strong>Gestion des promotions</strong> :
+                <ul>
+                    <li><strong>Association des promotions</strong> : Un produit peut être lié à plusieurs promotions, avec détails sur la promotion, pourcentage de réduction, dates de début et de fin.</li>
+                    <li><strong>Produits périmés ou endommagés</strong> : L'enregistrement des produits périmés ou endommagés fera l'objet de ventes spéciales à 0 €.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="33-gestion-des-achats-et-des-stocks">3.3 Gestion des Achats et des Stocks</h3>
+<ul>
+    <li><strong>Gestion des lots</strong> :
+        <ul>
+            <li><strong>Enregistrement des lots</strong> : Chaque lot est identifié par <code>ID_LOT</code> et lié à un produit, un fournisseur et l’utilisateur ayant effectué l’achat.</li>
+            <li><strong>Informations sur le lot</strong> : Prix unitaire, quantité, date d’achat, date de péremption.</li>
+            <li><strong>Traçabilité</strong> : Suivi complet du lot depuis l’achat jusqu’à la vente.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="34-gestion-des-ventes">3.4 Gestion des Ventes</h3>
+<ul>
+    <li><strong>Enregistrement des ventes</strong> :
+        <ul>
+            <li><strong>Détails des ventes</strong> : Chaque vente est identifiée par <code>ID_VENTE</code> et inclut l’utilisateur ayant réalisé la vente, le produit vendu, le client, la quantité vendue et le prix unitaire.</li>
+            <li><strong>Tickets de caisse détaillés</strong> : Génération de tickets incluant toutes les informations pertinentes.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="35-gestion-des-clients">3.5 Gestion des Clients</h3>
+<ul>
+    <li><strong>Informations clients</strong> :
+        <ul>
+            <li><strong>Enregistrement des clients</strong> : Stockage du prénom et du nom des clients optionnel, nbr_achat pour stocker ses points de fidélité.</li>
+            <li><strong>Fidélisation</strong> : Possibilité de lier les ventes aux clients pour des programmes de fidélité.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="36-gestion-des-utilisateurs">3.6 Gestion des Utilisateurs</h3>
+<ul>
+    <li><strong>Authentification et autorisation</strong> :
+        <ul>
+            <li><strong>Informations utilisateurs</strong> : Nom d’utilisateur, mot de passe haché, e-mail, prénom, nom, statut, rôle .</li>
+            <li><strong>Gestion des rôles</strong> : Différents niveaux d’accès (administrateur, gérant, employé). Accès privilégié en fonction du rôle pour protéger les données</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="37-gestion-des-logs">3.7 Gestion des Logs</h3>
+<ul>
+    <li><strong>Traçabilité des actions</strong> :
+        <ul>
+            <li><strong>Enregistrement des actions</strong> : Chaque action effectuée par un utilisateur est loggée avec des détails .</li>
+            <li><strong>Informations du log</strong> : Action, nom de la table affectée, identifiant de l’enregistrement, horodatage, détails supplémentaires.</li>
+            <li><strong>Relation avec l’utilisateur</strong> : Chaque log est lié à un utilisateur. Ainsi, nous savons toujours qui a fait quelle action, notamment pour des raisons de sécurité.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="38-tableaux-de-bord-et-rapports">3.8 Tableaux de Bord et Rapports</h3>
+<ul>
+    <li><strong>Analyses avancées</strong> :
+        <ul>
+            <li><strong>Résultats du jour et du mois</strong> : Total des ventes, bénéfices, top 10 des ventes en quantité et en bénéfices.</li>
+            <li><strong>Commandes à effectuer</strong> : Liste des produits à commander, avec options de validation, modification des quantités, choix du fournisseur.</li>
+            <li><strong>Prix d’achat moyen</strong> : Calcul basé sur les lots achetés non encore vendus.</li>
+            <li><strong>Lots en fin de péremption</strong> : Liste des lots proches de la date de péremption.</li>
+            <li><strong>Évaluations fournisseurs</strong> : Accès aux notations et commentaires pour chaque fournisseur.</li>
+            <li><strong>Suivi des promotions</strong> : Impact des promotions sur les ventes.</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+<h2 id="spécifications-techniques">Spécifications Techniques</h2>
+
+<h3 id="41-technologies-utilisées">4.1 Technologies Utilisées</h3>
+<ul>
+    <li><strong>Langage de programmation</strong> : Java.</li>
+    <li><strong>Base de données</strong> :
+        <ul>
+            <li><strong>SGBD</strong> : PostgreSQL.</li>
+        </ul>
+    </li>
+    <li><strong>Interface Utilisateur</strong> :
+        <ul>
+            <li>Application en ligne de commande (CLI) exécutée via le terminal.</li>
+        </ul>
+    </li>
+    <li><strong>Environnement d'exécution</strong> :
+        <ul>
+            <li>Compatible avec les systèmes Unix/Linux.</li>
+        </ul>
+    </li>
+    <li><strong>Sécurité</strong> :
+        <ul>
+            <li>Gestion des accès et authentification via le terminal.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="42-architecture-du-système">4.2 Architecture du Système</h3>
+<ul>
+    <li><strong>Architecture en couches</strong> :
+        <ul>
+            <li><strong>Interface Utilisateur</strong> : Interactions via le terminal.</li>
+            <li><strong>Métier</strong> : Logique applicative en Java.</li>
+            <li><strong>Accès aux données</strong> : Communication avec PostgreSQL via JDBC.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="43-sécurité-et-authentification">4.3 Sécurité et Authentification</h3>
+<ul>
+    <li><strong>Gestion des utilisateurs</strong> :
+        <ul>
+            <li><strong>Hashage des mots de passe</strong> : Utilisation d’algorithmes sécurisés (ex : bcrypt).</li>
+            <li><strong>Contrôle d’accès</strong> : Permissions basées sur les rôles.</li>
+        </ul>
+    </li>
+    <li><strong>Protection des données</strong> :
+        <ul>
+            <li>Chiffrement des données sensibles stockées (optionnel).</li>
+        </ul>
+    </li>
+    <li><strong>Gestion des sessions</strong> :
+        <ul>
+            <li>Authentification au début de chaque session terminal (optionnel).</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="44-journalisation-des-actions">4.4 Journalisation des Actions</h3>
+<ul>
+    <li><strong>Logs détaillés</strong> :
+        <ul>
+            <li>Enregistrement automatique des actions critiques avec détails pour audit.</li>
+        </ul>
+    </li>
+    <li><strong>Fichiers de log</strong> :
+        <ul>
+            <li>Stockage des logs dans des fichiers ou tables dédiées pour analyse ultérieure. Accès que pour les managers...</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="45-gestion-des-promotions">4.5 Gestion des Promotions</h3>
+<ul>
+    <li><strong>Application des promotions</strong> :
+        <ul>
+            <li>Calcul automatique des prix réduits lors des ventes.</li>
+            <li>Affichage des promotions lors de la consultation des produits via le terminal.</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+<h2 id="scénarios-dutilisation">Scénarios d'Utilisation</h2>
+
+<h3 id="51-gestion-des-fournisseurs-et-des-contacts">5.1 Gestion des Fournisseurs et des Contacts</h3>
+<p><strong>Acteurs</strong> : Gérant, Administrateur</p>
+<p><strong>But</strong> : Gérer efficacement les fournisseurs et leurs contacts associés.</p>
+<p><strong>Scénario</strong> :</p>
+<ol>
+    <li><strong>Connexion au système</strong> :
+        <ul>
+            <li>L'utilisateur ouvre le terminal et lance l'application.</li>
+            <li>Il est invité à saisir son nom d'utilisateur et son mot de passe.</li>
+        </ul>
+    </li>
+    <li><strong>Ajout d’un nouveau fournisseur</strong> :
+        <ul>
+            <li>L'utilisateur sélectionne l'option "Gérer les fournisseurs" dans le menu principal.</li>
+            <li>Il choisit "Ajouter un fournisseur".</li>
+            <li>Il saisit les informations requises : nom de la société, numéro SIRET, adresse, e-mail principal .</li>
+        </ul>
+    </li>
+    <li><strong>Ajout de contacts pour le fournisseur</strong> :
+        <ul>
+            <li>Après avoir ajouté le fournisseur, l'utilisateur sélectionne "Ajouter un contact".</li>
+            <li>Il saisit le nom, le prénom, la fonction, l’e-mail et le téléphone du contact.</li>
+            <li>Les contacts sont automatiquement liés au fournisseur via <code>ID_FOURNISSEUR</code> ou via son nom complet.</li>
+        </ul>
+    </li>
+    <li><strong>Consultation des fournisseurs</strong> :
+        <ul>
+            <li>L'utilisateur peut lister les fournisseurs, rechercher par nom ou catégorie de produits.</li>
+            <li>Il peut afficher les contrats associés et les évaluations.</li>
+        </ul>
+    </li>
+</ol>
+<p><strong>Points forts de la modélisation</strong> :</p>
+<ul>
+    <li>Permet de gérer plusieurs contacts pour un fournisseur, offrant une flexibilité dans la communication.</li>
+</ul>
+
+<h3 id="52-gestion-des-produits-et-des-promotions">5.2 Gestion des Produits et des Promotions</h3>
+<p><strong>Acteurs</strong> : Gérant, Administrateur</p>
+<p><strong>But</strong> : Gérer le catalogue de produits et les promotions associées.</p>
+<p><strong>Scénario</strong> :</p>
+<ol>
+    <li><strong>Ajout d'un nouveau produit</strong> :
+        <ul>
+            <li>L'utilisateur sélectionne "Gérer les produits" dans le menu principal.</li>
+            <li>Il choisit "Ajouter un produit".</li>
+            <li>Il saisit le nom, la description, la catégorie et le prix de vente actuel.</li>
+        </ul>
+    </li>
+    <li><strong>Association d'une promotion</strong> :
+        <ul>
+            <li>Dans le menu "Gérer les promotions", il choisit "Ajouter une promotion".</li>
+            <li>Il sélectionne le produit concerné.</li>
+            <li>Il définit le pourcentage de réduction et les dates de début et de fin.</li>
+        </ul>
+    </li>
+    <li><strong>Consultation des produits</strong> :
+        <ul>
+            <li>L'utilisateur peut afficher la liste des produits avec les promotions en cours.</li>
+        </ul>
+    </li>
+</ol>
+<p><strong>Points forts de la modélisation</strong> :</p>
+<ul>
+    <li>Le fait qu'un produit puisse bénéficier de plusieurs promotions offre une flexibilité marketing. Par exemple, lorsqu'un produit approche de sa date de péremption, nous le mettons en promotion. Il peut également être concerné par une autre promotion applicable à tous les produits, comme durant la période de Noël.</li>
+</ul>
+
+<h3 id="53-gestion-des-achats-lots-et-des-stocks">5.3 Gestion des Achats (Lots) et des Stocks</h3>
+<p><strong>Acteurs</strong> : Gestionnaire de Stock</p>
+<p><strong>But</strong> : Gérer les achats de produits et le suivi des stocks.</p>
+<p><strong>Scénario</strong> :</p>
+<ol>
+    <li><strong>Enregistrement d'un nouvel achat</strong> :
+        <ul>
+            <li>L'utilisateur sélectionne "Gérer les achats" dans le menu principal.</li>
+            <li>Il choisit "Ajouter un lot".</li>
+            <li>Il saisit les informations : produit, fournisseur, quantité, prix unitaire, date d'achat, date de péremption.</li>
+            <li>Le lot reçoit un <code>ID_LOT</code> unique.</li>
+        </ul>
+    </li>
+    <li><strong>Consultation des stocks</strong> :
+        <ul>
+            <li>L'utilisateur peut voir les quantités disponibles pour chaque produit.</li>
+            <li>Il peut afficher les lots proches de la date de péremption. ou ceux qui sont sur le point de s'épuiser</li>
+        </ul>
+    </li>
+</ol>
+
+<h3 id="54-gestion-des-ventes-et-des-clients">5.4 Gestion des Ventes et des Clients</h3>
+<p><strong>Acteurs</strong> : Caissier</p>
+<p><strong>But</strong> : Enregistrer les ventes et gérer les informations clients.</p>
+<p><strong>Scénario</strong> :</p>
+<ol>
+    <li><strong>Enregistrement d'une vente</strong> :
+        <ul>
+            <li>L'utilisateur sélectionne "Enregistrer une vente".</li>
+            <li>Il saisit le <code>ID_LOT</code>, la quantité vendue, le client (s'il est enregistré).</li>
+            <li>L'application calcule automatiquement le prix total en tenant compte des promotions.</li>
+            <li>Un ticket de caisse détaillé est généré.</li>
+        </ul>
+    </li>
+    <li><strong>Enregistrement d'un nouveau client</strong> :
+        <ul>
+            <li>Si le client n'est pas dans la base, l'utilisateur peut l'ajouter en saisissant son prénom et nom.</li>
+        </ul>
+    </li>
+</ol>
+
+<h3 id="55-évaluation-des-fournisseurs">5.5 Évaluation des Fournisseurs</h3>
+<p><strong>Acteurs</strong> : Gérant, Gestionnaire de Stock</p>
+<p><strong>But</strong> : Évaluer les fournisseurs pour améliorer les relations commerciales.</p>
+<p><strong>Scénario</strong> :</p>
+<ol>
+    <li><strong>Accéder aux évaluations</strong> :
+        <ul>
+            <li>L'utilisateur sélectionne "Évaluer un fournisseur".</li>
+            <li>Il choisit le fournisseur concerné.</li>
+        </ul>
+    </li>
+    <li><strong>Ajouter une évaluation</strong> :
+        <ul>
+            <li>Il attribue une note et saisit un commentaire.</li>
+            <li>La date de l'évaluation est automatiquement enregistrée.</li>
+        </ul>
+    </li>
+    <li><strong>Consulter les évaluations</strong> :
+        <ul>
+            <li>L'utilisateur peut consulter l'historique des évaluations pour chaque fournisseur.</li>
+        </ul>
+    </li>
+</ol>
+
+<h3 id="56-gestion-des-utilisateurs-et-sécurité">5.6 Gestion des Utilisateurs et Sécurité</h3>
+<p><strong>Acteurs</strong> : Administrateur</p>
+<p><strong>But</strong> : Gérer les comptes utilisateurs et assurer la sécurité du système.</p>
+<p><strong>Scénario</strong> :</p>
+<ol>
+    <li><strong>Ajout d'un nouvel utilisateur</strong> :
+        <ul>
+            <li>L'administrateur sélectionne "Gérer les utilisateurs".</li>
+            <li>Il choisit "Ajouter un utilisateur".</li>
+            <li>Il saisit le nom d'utilisateur, le mot de passe (qui sera haché), l'e-mail, le prénom, le nom, le rôle.</li>
+        </ul>
+    </li>
+    <li><strong>Modification des permissions</strong> :
+        <ul>
+            <li>L'administrateur peut modifier les rôles et statuts des utilisateurs existants.</li>
+        </ul>
+    </li>
+    <li><strong>Authentification</strong> :
+        <ul>
+            <li>Chaque utilisateur doit s'authentifier au lancement de l'application.</li>
+            <li>Les accès sont contrôlés en fonction du rôle.</li>
+        </ul>
+    </li>
+</ol>
+
+<h3 id="57-tableaux-de-bord-et-rapports">5.7 Tableaux de Bord et Rapports</h3>
+<p><strong>Acteurs</strong> : Gérant</p>
+<p><strong>But</strong> : Accéder à des analyses pour prendre des décisions stratégiques.</p>
+<p><strong>Scénario</strong> :</p>
+<ol>
+    <li><strong>Accès aux tableaux de bord</strong> :
+        <ul>
+            <li>Le gérant sélectionne "Tableaux de bord" dans le menu principal.</li>
+        </ul>
+    </li>
+    <li><strong>Visualisation des données</strong> :
+        <ul>
+            <li>Il peut consulter les résultats du jour, du mois, le top 10 des ventes, les commandes à effectuer, etc.</li>
+            <li>Les données sont présentées de manière claire via le terminal.</li>
+        </ul>
+    </li>
+    <li><strong>Prise de décision</strong> :
+        <ul>
+            <li>En fonction des rapports, le gérant peut décider de commander de nouveaux produits, lancer des promotions, etc.</li>
+        </ul>
+    </li>
+</ol>
+
+<hr>
+
+<h2 id="points-forts-de-la-modélisation-dans-le-contexte-terminal">6. Points Forts de la Modélisation dans le Contexte Terminal</h2>
+<ul>
+    <li><strong>Simplicité d'Utilisation</strong> :
+        <ul>
+            <li>Interface en ligne de commande rapide et efficace pour le personnel.</li>
+        </ul>
+    </li>
+    <li><strong>Performance</strong> :
+        <ul>
+            <li>Application légère avec des temps de réponse rapides.</li>
+        </ul>
+    </li>
+    <li><strong>Traçabilité</strong> :
+        <ul>
+            <li>Enregistrement détaillé des actions pour une transparence totale.</li>
+        </ul>
+    </li>
+    <li><strong>Flexibilité</strong> :
+        <ul>
+            <li>Possibilité d'étendre l'application avec de nouvelles fonctionnalités.</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+<h2 id="architecture-du-système-basée-sur-la-modélisation">7. Architecture du Système Basée sur la Modélisation</h2>
+<ul>
+    <li><strong>Application Mono-utilisateur ou Multi-utilisateur</strong> :
+        <ul>
+            <li>Support pour plusieurs utilisateurs connectés via des terminaux différents (nous allons essayer de faire cela).</li>
+        </ul>
+    </li>
+    <li><strong>Communication avec la Base de Données</strong> :
+        <ul>
+            <li>Utilisation de JDBC pour interagir avec PostgreSQL.</li>
+        </ul>
+    </li>
+    <li><strong>Modèle MVC Adapté au Terminal</strong> :
+        <ul>
+            <li>Séparation entre la logique métier, l'interface en ligne de commande et l'accès aux données.</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+<h2 id="conformité-légale-et-réglementaire">8. Conformité Légale et Réglementaire</h2>
+
+<h3 id="81-protection-des-données-personnelles">8.1 Protection des Données Personnelles</h3>
+<ul>
+    <li><strong>Conformité RGPD</strong> : Même si l'application est interne, les données personnelles doivent être protégées.</li>
+</ul>
+
+<h3 id="82-sécurité-des-données">8.2 Sécurité des Données</h3>
+<ul>
+    <li><strong>Stockage sécurisé</strong> : Chiffrement des données sensibles.</li>
+    <li><strong>Accès contrôlé</strong> : Gestion des permissions.</li>
+</ul>
+
+<h3 id="83-obligations-légales">8.3 Obligations Légales</h3>
+<ul>
+    <li><strong>Licences</strong> : Utilisation de logiciels et bibliothèques open-source conformes.</li>
+</ul>
+
+<hr>
+
+<h2 id="gestion-de-projet-et-planification">9. Gestion de Projet et Planification</h2>
+
+<h3 id="91-méthodologie-de-gestion-de-projet">9.1 Méthodologie de Gestion de Projet</h3>
+<ul>
+    <li><strong>Approche itérative</strong> : Le développement sera réalisé en cycles (sprints) permettant d’intégrer les retours des parties prenantes à chaque étape.</li>
+    <li><strong>Phases du projet</strong> :
+        <ul>
+            <li>Analyse des besoins.</li>
+            <li>Développement des fonctionnalités de base.</li>
+            <li>Développement des fonctionnalités avancées.</li>
+            <li>Tests et optimisation.</li>
+            <li>Déploiement et documentation.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="92-calendrier-prévisionnel">9.2 Calendrier Prévisionnel</h3>
+<table>
+    <tr>
+        <th>Phase</th>
+        <th>Description</th>
+        <th>Durée estimée</th>
+    </tr>
+    <tr>
+        <td>Analyse des besoins</td>
+        <td>Compréhension des spécifications</td>
+        <td>1 semaines</td>
+    </tr>
+    <tr>
+        <td>Développement Back-End</td>
+        <td>Implémentation des fonctionnalités Java</td>
+        <td>2 semaines</td>
+    </tr>
+    <tr>
+        <td>Développement Base de Données</td>
+        <td>Conception des tables PostgreSQL</td>
+        <td>1 semaines</td>
+    </tr>
+    <tr>
+        <td>Développement Terminal</td>
+        <td>Création des interactions CLI</td>
+        <td>4 jours</td>
+    </tr>
+    <tr>
+        <td>Intégration et Tests</td>
+        <td>Tests unitaires et d’intégration</td>
+        <td>1 semaines</td>
+    </tr>
+    <tr>
+        <td>Déploiement et Documentation</td>
+        <td>Mise en service et écriture des guides</td>
+        <td>4 jours</td>
+    </tr>
+</table>
+
+<h3 id="93-ressources">9.3 Ressources</h3>
+<ul>
+    <li><strong>Équipe de développement</strong> :
+        <ul>
+            <li><strong>Chef de projet</strong> : Supervision générale du projet.</li>
+            <li><strong>Développeurs Java</strong> : Développement de la logique métier et du CLI.</li>
+            <li><strong>Spécialiste base de données</strong> : Conception et gestion de PostgreSQL.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="94-gestion-des-risques">9.4 Gestion des Risques</h3>
+<ul>
+    <li><strong>Risques techniques</strong> : Retards dus à des incompatibilités entre la base de données et l’application.</li>
+    <li><strong>Plan de mitigation</strong> :
+        <ul>
+            <li>Formation de l’équipe sur PostgreSQL et JDBC.</li>
+            <li>Tests précoces pour identifier les problèmes.</li>
+            <li>Révision régulière des jalons du projet.</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+<h2 id="assurance-qualité">10. Assurance Qualité</h2>
+
+<h3 id="101-plan-de-tests">10.1 Plan de Tests</h3>
+<ul>
+    <li><strong>Tests unitaires</strong> : Chaque fonctionnalité sera testée individuellement pour valider son comportement.</li>
+    <li><strong>Tests d’intégration</strong> : Vérification de la communication entre les modules (CLI, base de données).</li>
+    <li><strong>Tests système</strong> : Évaluation complète dans un environnement simulé.</li>
+    <li><strong>Tests utilisateurs</strong> : Scénarios réels pour valider que les besoins du client sont bien couverts.</li>
+</ul>
+
+<h3 id="102-critères-de-performance">10.2 Critères de Performance</h3>
+<ul>
+    <li><strong>Temps de réponse</strong> : Les commandes du terminal doivent être exécutées en moins de 2 secondes.</li>
+    <li><strong>Stabilité</strong> : L’application doit rester fonctionnelle lors d’une utilisation prolongée ou intensive.</li>
+</ul>
+
+<h3 id="103-revue-de-code">10.3 Revue de Code</h3>
+<ul>
+    <li><strong>Standards de codage</strong> : Respect des conventions Java et PostgreSQL.</li>
+    <li><strong>Relecture par les pairs</strong> : Chaque module sera relu par un autre membre de l’équipe pour identifier les erreurs.</li>
+</ul>
+
+<hr>
+
+<h2 id="maintenance-et-support">11. Maintenance et Support</h2>
+
+<h3 id="111-support-post-déploiement">11.1 Support Post-Déploiement</h3>
+<ul>
+    <li><strong>Maintenance corrective</strong> : Résolution rapide des bugs identifiés après le déploiement.</li>
+    <li><strong>Maintenance évolutive</strong> : Ajout de nouvelles fonctionnalités en fonction des besoins du client.</li>
+</ul>
+
+<h3 id="112-plan-de-sauvegarde">11.2 Plan de Sauvegarde</h3>
+<ul>
+    <li><strong>Sauvegardes régulières</strong> : Mise en place d’un système automatique pour sauvegarder la base de données.</li>
+</ul>
+
+<h3 id="113-scalabilité">11.3 Scalabilité</h3>
+<ul>
+    <li><strong>Évolutivité</strong> : Architecture flexible pour gérer une augmentation du nombre d’utilisateurs ou de transactions.</li>
+</ul>
+
+<hr>
+
+<h2 id="critères-dacceptation">12. Critères d'Acceptation</h2>
+
+<h3 id="121-conformité-aux-spécifications">12.1 Conformité aux Spécifications</h3>
+<ul>
+    <li><strong>Fonctionnalités opérationnelles</strong> : Toutes les fonctionnalités essentielle décrites doivent être implémentées et fonctionnelles.</li>
+    <li><strong>Performance</strong> : La majoritè des critères de performance définis doivent être atteints.</li>
+</ul>
+
+<h3 id="122-validation-par-le-client">12.2 Validation par le Client</h3>
+<ul>
+    <li><strong>Tests d’acceptation</strong> : Les scénarios d’utilisation seront exécutés en présence du client.</li>
+    <li><strong>Feedback</strong> : Les retours seront pris en compte pour des ajustements éventuels.</li>
+</ul>
+
+<h3 id="123-documentation-complète">12.3 Documentation Complète</h3>
+<ul>
+    <li><strong>Manuel utilisateur</strong> : Guide détaillé pour l’utilisation des commandes dans le terminal.</li>
+    <li><strong>Documentation technique</strong> : Explications sur l’architecture, le code et la structure de la base de données.</li>
+</ul>
+
+<hr>
+
+<h2 id="annexes">13. Annexes</h2>
+
+<h3 id="131-glossaire">13.1 Glossaire</h3>
+<ul>
+    <li><strong>CLI</strong> : Command Line Interface (Interface en ligne de commande).</li>
+    <li><strong>DF</strong> : Dépendance Fonctionnelle.</li>
+    <li><strong>DM</strong> : Dépendance Multivaluée.</li>
+    <li><strong>CRUD</strong> : Create, Read, Update, Delete (opérations sur les données).</li>
+    <li><strong>SGBD</strong> : Système de Gestion de Base de Données.</li>
+</ul>
+
+<h3 id="132-références">13.2 Références</h3>
+<ul>
+    <li><strong>Normes</strong> :
+        <ul>
+            <li>Conventions de codage Java.</li>
+            <li>Documentation officielle PostgreSQL.</li>
+        </ul>
+    </li>
+    <li><strong>Textes légaux</strong> :
+        <ul>
+            <li>RGPD : Règlement Général sur la Protection des Données.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="133-schémas">13.3 Schémas</h3>
+<ul>
+    <li><strong>Schéma de la Base de Données</strong> :
+        <ul>
+            <li>Tables, attributs, clés primaires et étrangères.</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+<h2 id="conclusion">14. Conclusion</h2>
+<p>Ce cahier des charges fournit une vision claire et détaillée du projet <strong>"Ma Supérette sur le Net"</strong> dans le contexte d’une application en ligne de commande. Il décrit toutes les spécifications fonctionnelles, techniques et organisationnelles nécessaires à la réussite du projet. Le respect de ces exigences garantira une application efficace, performante et conforme aux attentes du client.</p>
+
+<hr>
+
+</body>
+</html>

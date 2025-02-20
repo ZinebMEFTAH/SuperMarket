@@ -1,0 +1,143 @@
+DF:
+•	DF1 : ID_FOURNISSEUR → NOM_SOCIETE, NUMERO_SIRET, F_ADRESSE, EMAIL_PRINCIPAL
+•	DF2 : ID_CONTACT → ID_FOURNISSEUR, F_NOM, F_PRENOM, FONCTION, F_EMAIL, F_TELEPHONE
+•	DF3 : ID_PRODUIT → P_NOM, DESCRIPTION_DETAILLEE, P_CATEGORIE, PRIX_VENTE_ACTUEL
+•	DF4 : ID_CONTRAT → ID_FOURNISSEUR, ID_PRODUIT, QUANTITE_MINIMALE, DATE_DEBUT, DATE_FIN, PRIX_FIXE
+•	DF5 : ID_LOT → ID_PRODUIT* , ID_FOURNISSEUR* , ID_USER*, PRIX_UNITAIRE, L_QUANTITE, DATE_ACHAT, DATE_PEREMPTION
+•	DF6 : ID_VENTE → ID_USER* , ID_LOT* , ID_CLIENT*, V_QUANTITE, PRIX_UNITAIRE
+•	DF7 : ID_CLIENT → C_PRENOM, C_NOM
+•	DF8 : ID_USER → USERNAME, PASSWORD_HASH, U_EMAIL, U_PRENOM, U_NOM, STATUS, ROLE
+•	DF9 : ID_RATING → ID_FOURNISSEUR* , ID_USER*, RATING, COMMENTS, RATING_DATE
+•	DF10 : ID_PROMOTION → PROMOTION_NAME, DESCRIPTION, DISCOUNT_PERCENTAGE, START_DATE, END_DATE
+•	DF11 : ID_LOG → ID_USER*,date,hd,hf;
+•	DF12 : ID_Action ->descACT  
+DM:
+•	DM1: ID_PRODUIT ->-> ID_PROMOTION(…)
+•	DM2: ID_FOURNISSEUR ->-> ID_CONTACT(…)
+•	DM3: ID_USER ->-> ID_LOG(…)
+•	DM4: ID_LOG ->-> ACTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+R(idContact(..idFournisseur1(..)),idContart(...idFournisseur2(...),idProduit1(...)),idVente(...idLot(...idProduit2(...),idFournisseur3(...),idUser1(..)),idUser(..),idclient(...)),IdRating(…IdFournisseur4(..)idUser3(...)),idlog(...user4(..)),idPromotion(..),idAction(..)){d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,dm1,dm2,dm3,dm4}
+
+
+
+
+
+
+
+
+R4(idContact(..idFournisseur1(..)),idContart(...idFournisseur2(...),idProduit1(...)),idVente(...idLot(...idProduit2(...),idFournisseur3(...),idUser1(..)),idUser(..),idclient(...)),IdRating(…IdFournisseur4(..)idUser3(...)),idlog(...user4(..)),idPromotion(..)){d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,dm1,dm2,dm3}
+
+
+
+
+
+
+
+R11(idContact(..idFournisseur1(..)),idContart(...idFournisseur2(...),idProduit1(...)),idVente(...idLot(...idProduit2(...),idFournisseur3(...),idUser1(-)),idUser(-),idclient(...)),IdRating(…IdFournisseur4(..)idUser3(-)),idlog(...user4(-)),idPromotion(..)){d1,d2,d3,d4,d5,d6,d7,d9,d10,dm1,dm2}
+
+
+
+
+R12(IDFournisseur3,IdContact(..IDFournisseur1(..))){df1,df2}
+
+
+
+
+
+R16(idContart(...idFournisseur2(-),idProduit1(...)),idVente(...idLot(...idProduit2(...),idFournisseur3(-),idUser1(..)),idUser(..),idclient(...)),IdRating(…IdFournisseur4(-)idUser3(...)),idlog(...user4(-)),idPromotion(..)){d3,d4,d5,d6,d7,d9,d10,dm1}
+
+
+
+
+R20(idContart(...idFournisseur2(-),idProduit1(...)),idVente(...idLot(...idProduit2(...),idFournisseur3(-),idUser1(..)),idUser(..),idclient(...)),IdRating(…IdFournisseur4(-)idUser3(...)),idlog(...user4(-)),idPromotion(-)){d3,d4,d5,d6,d7,d9}
+
+
+
+
+R22(idContart(...idFournisseur2(-),idProduit1(...)),idVente(...idLot(...idProduit2(...),idFournisseur3(-),idUser1(-)),idUser(-),idclient(...)),IdRating(-),idlog(...user4(-)),idPromotion(-)){d3,d4,d5,d6,d7}
+
+
+
+
+
+R24(idContart(...idFournisseur2(-),idProduit1(...)),idVente(...idLot(...idProduit2(...),idFournisseur3(-),idUser1(-)),idUser(-),idclient(-)),IdRating(-),idlog(...user4(-)),idPromotion(-)){d3,d4,d5,d6}
+
+
+
+
+R26(idContart(...idFournisseur2(-),idProduit1(...)),idVente(...idLot(...idProduit2(...),idFournisseur3(-),idUser1(-)),idUser(-),idclient(-)),IdRating(-),idlog(...user4(-)),idPromotion(-)){d3,d4,d5}
+
+
+
+
+R28(idContart(...idFournisseur2(-),idProduit1(...)),idVente(...idLot(-),idUser(-),idclient(-)),IdRating(-),idlog(...user4(-)),idPromotion(-)){d3,d4}
+
+
+
+R30(idContart(-),idVente(...idLot(-),idUser(-),idclient(-)),IdRating(-),idlog(...user4(-)),idPromotion(-)){d4}
+
+
+
+
+R32(idContart(-),idVente(-),IdRating(-),idlog(-),idPromotion(-)){d4}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+================les relations amélorées========================
+
+
+Promotion(idPromo*, nomPromo, descPromo, pourcentagePromo, dateDebut, dateFin);
+Produit_Promotion(idPromo*#, idProd*#);
+Contact(idContact*, nomContact, prenomContact, fonction, email, tel);
+Fournisseur_Contact(idContact*#, idFournisseur*#);
+User(idUser*, username, passwordHash, uEmail, uPrenom, uNom, status, role);
+LogUser(idLog*, idUser#, date, time);
+Action(idAction*, action);
+ActionLogUser(idAction*#, idLog*#);
+Fournisseur(idFournisseur*, NomEntreprise, F_Adresse, emailPrincipal);
+UserRatingFournisseur(idUser*#, idFournisseur*#);
+Client(idClient*, prenom, nom, nbrAchat);
+Produit(idProduit*, nomProd, descProd, catProd, prixVente);
+Lot(idLot*, idProduit#, prixUnt, lotQuantite, dateAchat, datePeremption);
+Vente(idVente*, dateVente*, idUser#, idLot#, Vquantite, prixUnt);
+Contrat(idContrat*, idFournisseur#, idProduit#, minQuantite, dateDebut, dateFin, prixFixe);
+
+
+
+
+
+===================================================================
+
+
