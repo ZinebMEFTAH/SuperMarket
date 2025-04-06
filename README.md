@@ -169,4 +169,4 @@ This project aims to **revolutionize supermarket operations** by offering an **e
 ## 🔗 Contact  
 📧 **Email:** [meftahworld@gmail.com](mailto:meftahworld@gmail.com)  
 💼 **LinkedIn:** [Meftah Zineb](https://www.linkedin.com/in/meftah-zineb-5768ba25b)  
-🌍 **Portfolio:** [VotrePortfolio.com](https://votreportfolio.com)  
+🌍 **Portfolio:** [Portfolio.com](https://zinebmeftah.github.io)
